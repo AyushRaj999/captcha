@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #p1{
+            background-image: url("captcha.png");
+            width: 115px;
+            text-decoration:line-through;
+        }
+    </style>
+    <script>
+        function Random(min,max){
+          var a=Math.random();
+          var b=a*(max-min)+min;
+          b=parseInt(b);
+          return b;
+        }
+        function generate(){
+            var a=Random(0,9);
+            var b=String.fromCharCode(Random(65,90));
+            var c=String.fromCharCode(Random(97,122));
+            var d=Random(0,9);
+            var e=String.fromCharCode(Random(65,90));
+            var f=String.fromCharCode(Random(97,122));
+            var code=a+b+c+d+e+f;
+            document.getElementById("p1").innerHTML=code;
+            document.getElementById("p1").style.fontStyle="italic";
+            document.getElementById("p1").style.color="white";
+        }
+        function submit(){
+            var a=document.getElementById("i1").value;
+            var b=document.getElementById("p1").innerText;
+            console.log(b);
+            if(a==b){
+                alert("Right Captcha")
+            }
+            else{
+                alert("wrong Captcha")
+            }
+        }
+    </script>
+</head>
+<body onload="generate()">
+    <h1 id="p1"></h1>
+        <button onclick="generate()">Refresh</button>
+        <input type="" id="i1">
+        <button onclick="submit()">Submit</button>
+</body>
+
+</html>
